@@ -15,6 +15,7 @@ const App = () => {
 
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
 
     const fields = {
@@ -53,7 +54,7 @@ const App = () => {
      {error.name&&<p  style={{color:'red'}}>{error.name}</p>}
 
      <label htmlFor='email'>Email:</label>   
-     <input onChange={(e)=>{setformdata({...formdata,email:e.target.value})}} id='email' required value={formdata.email} type="text"/>
+     <input onChange={(e)=>{setformdata({...formdata,email:e.target.value})}} id='email'  value={formdata.email} type="text"/>
      <br/>
      {error.email&& <p style={{color:'red'}}>{error.email}</p>}
 
