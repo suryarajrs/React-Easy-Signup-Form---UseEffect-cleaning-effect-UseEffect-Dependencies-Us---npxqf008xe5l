@@ -14,6 +14,7 @@ const signUpFormValidation = (formData) => {
             error[[field]] = `${field} not present`
         }
     })
+
     if(formData.name && (formData.name.length < 3 || formData.name.length > 20)){
         error['name'] = 'Name should be atleast 4 chars and less than 20 chars'
     }
@@ -25,6 +26,8 @@ const signUpFormValidation = (formData) => {
         error['email'] = 'Not a valid email'
     }
     if(Object.keys(error).length === 0) return null
+
+    
     return error
 }
 
