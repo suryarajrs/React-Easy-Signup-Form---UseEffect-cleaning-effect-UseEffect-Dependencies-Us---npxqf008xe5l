@@ -12,17 +12,41 @@ const App = () => {
 
   })
   const [error , seterror]=useState({})
-  {console.log(error)}
 
-  const handeOnClick  = (e)=>{
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    {console.log(formdata)}
 
-    seterror(signUpFormValidation(formdata))
-  }
+    const fields = {
+      name: formdata.name.trim(),
+      email: formdata.email.trim(),
+      password: formdata.password.trim(),
+    };
+    
+    const validationErrors = signUpFormValidation(fields);
+
+    if (validationErrors) {
+      seterror(validationErrors);
+    } else {
+      // Form submission logic goes here
+      // Reset the form and errors
+
+      setformdata({
+        email:'',
+        password:'',
+        name:''
+    
+      })
+      
+    }
+  };
+  
+
+  
   
   return (
-    <form>
+    <div>
+    <form onSubmit={handleSubmit}>
      <label htmlFor='name'>Name:</label>
      <input onChange={(e)=>{setformdata({...formdata,name:e.target.value})}} value={formdata.name} id='name' type="text"></input>
      <br />
@@ -41,15 +65,16 @@ const App = () => {
      
 
      <label htmlFor='consent'>   
-     <input id='consent' type="checkbox"></input>all
+     <input id='consent' type="checkbox"></input>I agree to the terms and conditions
      </label>
      <br/>
 
-     <button onClick={handeOnClick} id=''>Signup</button>
+     <button type="submit" id=''>Signup</button>
     </form>
-
+    </div>
   )
 }
+
 
 
 export default App;
